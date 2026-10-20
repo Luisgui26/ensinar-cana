@@ -1,0 +1,464 @@
+
+--- PÁGINA 1 ---
+Limite inferior da ordenacao por comparacp@se yeas
+
+Todos os algoritmos vistos até aqui obtém informagao comparando pares de ele-
+mentos. Quantas comparacées sao necessarias no pior caso?
+
+@ Um vetor de n elementos distintos admite n! permutagées;
+
+@ Cada comparacao divide o espaco de possibilidades em duas partes (arvore
+de decisao binaria);
+
+@ Com k comparacées distinguimos no maximo 2* permutacées.
+
+Logo, é preciso ter 2 > n!. Como n! > (n/2)"”?:
+
+k= log, n! = 5 log, 5 = Q(nlogn)
+
+Ideia-chave
+
+Nenhum algoritmo baseado em comparacdes pode ser melhor que
+
+Q(nlogn). Mergesort e Heapsort sao, portanto, assintoticamente 6timos.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 2 ---
+O que é o Counting Sort?
+
+@ E um algoritmo de ordenacio por contagem: em vez de comparar
+elementos entre si, ele conta quantas vezes cada valor aparece no
+vetor.
+
+@ Funciona quando os elementos sao inteiros dentro de um intervalo
+conhecido [0, k].
+
+@ Usa essas contagens para calcular diretamente a posicao final de
+cada elemento no vetor ordenado.
+
+Diferenca fundamental em relacao aos algoritmos anteriores
+
+O Counting Sort nao divide o problema pela metade (como
+MergeSort/QuickSort) nem decresce o problema em 1 (como
+Selecéo/Bubble/Insertion). Ele simplesmente percorre os dados um
+numero fixo de vezes. Por isso, nao existe uma formulacao recursiva
+natural para esse algoritmo — ele é, por esséncia, iterativo.
+
+caio Marques Silva CANA - Const. € A de Algoritmos
+
+
+--- PÁGINA 3 ---
+Universidade
+
+Ideia geral do algoritmo de Fortaleza
+
+O Counting Sort é feito em quatro fases:
+@ Contar quantas vezes cada valor 0,1,...,k aparece em v;
+
+@ Transformar essas contagens em somas acumuladas, obtendo
+quantos elementos sao < cada valor;
+
+@ Usar as somas acumuladas para colocar cada elemento de v
+diretamente em sua posicao final em um vetor de saida;
+
+@ Copiar o vetor de saida de volta para v (se necessario).
+
+Cada fase é implementada com um laco simples, sem chamadas
+recursivas.
+
+Prof. M.Sc. Caio Marques Silva x - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 4 ---
+1
+2
+3
+4
+
+5
+
+a
+
+ow oN
+
+_
+
+Pseudocdédigo do Counting Sort (Iterativa) bag aa may
+
+Entrada: vetor v de tamanho n, com valores em [0,k]
+Saida_ : v ordenado
+
+funcdo countingSort (y, n, k):
+C < vetor de tamanho k + 1, todo zerado;
+for i<—0ton—1do
+
+| Clvfi]] — c[v[i]]+1; // conta ocorréncias
+for j — 1tokdo
+
+| cli]—Chi]+cLli-1]; // soma acumulada
+B < vetor de tamanho n; // saida
+
+fori<n—1to0do
+| BE C{v[i]]-1] — v[i);
+C{v[i]] — C[v[i]] -1;
+
+copia B para v;
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 5 ---
+Exemplo passo a passo
+
+Universidade
+de Fortaleza
+
+Vamos simular o Counting Sort no seguinte vetor:
+
+L=[4, 2, 2, 8, 3, 3, 1]
+
+O algoritmo segue 5 passos:
+
+encontrar o maior elemento da lista;
+
+criar um vetor H de contagem, do tamanho max +1, zerado;
+contar as ocorréncias de cada valor em H;
+
+transformar H em soma acumulada, obtendo C;
+
+usar C para colocar cada elemento de L em sua posicao final em S.
+
+f, M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 6 ---
+Passos 1 e 2: maximo e vetor de contagem bag eos ee
+
+Passo 1. Encontrar o maior elemento da lista.
+
+L= [4, 2, 2,8,3,3,1] max = 8
+
+Passo 2. Criar um vetor H de tamanho max +1 = 9, todo zerado.
+H=[0,0,0,0,0,0,0,0,0]
+
+indices: 012345678
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 7 ---
+A ° Universidade
+Passo 3: contar as ocorréncias de Fortaleza
+
+Para cada elemento de L, incrementamos a posicao correspondente em H:
+L=[4,2,2,8,3,3,1]
+
+H=[0, 1, 2, 2, 1,0,0,0, 1]
+indices) O 1 2 3 4 567 8
+
+O valor 2 aparece 2 vezes > H[2] = 2; o valor 8 aparece 1 vez > H[8]=1;e
+assim por diante.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 8 ---
+A Universidade
+Passo 4: soma cumulativa da Fortelaze
+
+Cada posicéo de C soma todos os valores de H até ali — ou seja, C[j] diz
+quantos elementos de L sao <j:
+
+H=(0,1,2,2,1,0,0,0,1]
+
+C=([0, 1, 3, 5, 6, 6, 6, 6, 7]
+indices!) 0 123 45 67 8
+
+Por exemplo, C[4] = 6: existem 6 elementos em L menores ou iguais a 4.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 9 ---
+e : Universidade
+Passo 5: construir a saida da Fortelaze
+
+Para cada elemento de L (da direita para a esquerda, garantindo
+estabilidade), colocamos L[i] na posicéo C[L[i]]—1 de S, e
+decrementamos C[L[i]].
+
+i Li] C[L{i]] posicao=C[L[i]]—1 5S apdso passo
+
+6 1 1 0 [1,_,5>_]
+5 3 5 4 (1,,5535_]
+4 3 4 3 [1,_,3,3,,_]
+3 8 7 6 [1,_,_,3,3,_,8]
+2 2 3 2 [1,_,2,3,3,_,8]
+1 2 2 1 [1,2,2,3,3, ,8]
+0 4 6 5 [1,2,2,3,3,4,8]
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 10 ---
+Resultado final jig iene
+
+L=[4,2,2,8,3,3,1]
+
+Vetor ordenado:
+S=[1, 2, 2, 3, 3, 4, 8]
+
+Note que o Counting Sort nunca comparou dois elementos entre si — a
+ordenacao surgiu inteiramente das contagens em H e C.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 11 ---
+Analisando a complexidade, fase a fase bag aa may
+
+Como nao ha recorréncia, analisamos diretamente o custo de cada laco:
+
+Fase Custo
+Inicializar o vetor C (tamanho k + 1) @(k)
+Contar ocorréncias (percorre v) O(n)
+Calcular somas acumuladas (percorre C) ©(k)
+Construir a saida B (percorre v) O(n)
+Copiar B de volta para v O(n)
+
+Cada fase é um laco independente; o tempo total é a soma dos custos de
+todas elas.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 12 ---
+Funcao do tempo de execucéo pg oe my
+
+Somando o custo de todas as fases:
+
+f(n,k)= O(k) +O(n)+ O(k) + O(n) +O(n)
+“~~ “a lO “~~ “~~
+inicializarC contar acumular  construirB  copiar
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 13 ---
+Funcao do tempo de execucéo GS sereseete
+
+Somando o custo de todas as fases:
+
+f(n,k)= Ok) +O(n)+ E(k) + O(n) +O(n)
+He wr a a
+
+inicializarC contar acumular  construirB — copiar
+
+T(n,k) = O(n +k)
+
+O tempo depende de dois parametros: o tamanho do vetor (n) ea
+amplitude dos valores (k).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 14 ---
+Resultado final jy ee soe
+
+T(n) =@(n+k)
+
+@ Se k= O(n) (valores dentro de uma faixa proporcional ao tamanho
+do vetor), entao T(n) = O(n) — mais rapido que qualquer algoritmo
+baseado em comparacées;
+
+@ Isso nao contradiz o limite inferior Q(nlogn) dos algoritmos de
+ordenacao por comparacao, pois o Counting Sort nunca compara
+dois elementos entre si;
+
+@ Sek for muito maior que n (ex.: k = n?), 0 algoritmo se torna
+ineficiente, pois gasta @(k) apenas percorrendo o vetor de contagem.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 15 ---
+Por que nao ha relacao de recorréncia? S$ p vag loot mg
+
+@ MergeSort, QuickSort, Heap Sort: dividem o problema em partes
+menores — recorréncia do tipo T(n) = a: T(n/b) + f(n);
+
+@ Selecao, Bubble, Insertion Sort: decrescem 0 problema em 1 a cada
+passo — recorréncia do tipo T(n) = T(n— 1) +f(n);
+
+@ Counting Sort: ndo divide nem decresce 0 problema — ele percorre a
+entrada inteira um numero fixo de vezes.
+
+Sem chamadas recursivas, nao existe uma relacdo de recorréncia a
+construir. A complexidade é obtida somando diretamente o custo dos
+
+lacos — a mesma técnica usada para analisar as verses iterativas dos
+algoritmos anteriores.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 16 ---
+Counting Sort vs. algoritmos de comparacapaaepemred
+
+Baseado em comparacao Counting Sort
+(MergeSort, QuickSort, ...)
+
+Tempo (pior caso) Q(nlogn) O(n +k)
+Compara elementos? Sim Nao
+Requer conhecer o intervalo? Nao Sim ([0, k])
+Espaco extra varia O(n +k)
+
+O Counting Sort troca a generalidade (funcionar com qualquer tipo
+comparavel) por velocidade, aproveitando uma caracteristica especifica
+dos dados: valores inteiros em um intervalo conhecido.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 17 ---
+Universidade
+
+Resumo de Fortalez
+
+@ O Counting Sort ordena contando ocorréncias de cada valor, sem
+comparar elementos.
+
+@ E executado em quatro fases, cada uma implementada com um laco
+simples — nao ha recursao.
+
+@ Complexidade obtida por soma direta dos custos dos lacos (e nao
+por arvore de recursao):
+
+T(n) =O(n+k)
+
+@ Quando k = O(n), o algoritmo é O(n) — mais rapido que os
+algoritmos de comparagao, que tém limite inferior Q(nlogn).
+@ S6 é vantajoso quando o intervalo de valores k nao é muito maior que
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 18 ---
+Radix Sort e Bucket Sort (complemento)
+
+Radix Sort
+
+Generalizacaéo do Counting Sort: ordena os ntimeros digito a digito, do menos
+significativo para o mais significativo, usando um algoritmo estavel (em geral o
+proprio Counting Sort) em cada passagem. Complexidade O(d-n), onde d éo
+numero de digitos.
+
+[121, 432, 564, 23, 1, 45, 788] — unidade — dezena — centena
+
+Bucket Sort
+
+Distribui os n elementos, supostamente uniformemente distribuidos, em n
+baldes; ordena cada balde e concatena os resultados. Caso médio @(n); pior caso
+O(nlogn) (todos os elementos no mesmo balde).
+
+Assim como o Counting Sort, ambos nao comparam elementos entre si — é por isso que
+escapam do limite Q(nlogn).
+
+io Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 19 ---
+Resumo Geral: Algoritmos de Ordenacao p vag loot mg
+
+Algoritmo Melhor Médio Pior
+BubbleSort* O(n) O(n*) O(n?)
+InsertionSort* O(n) O(n?) O(n?)
+SelectionSort* O(n?) O(n?) O(n?)
+ShellSort O(nlogn) O(n'5) a O(nlog?n) O(n log? n) a O(n! 333)
+MergeSort* O(nlogn) O(nlogn) O(nlogn)
+QuickSort* O(nlogn) O(nlogn) O(n?)
+HeapSort* O(nlogn) O(nlogn) O(nlogn)
+CountingSort*’ O(n+m) O(n +m) O(n+m)
+RadixSort O(nd) O(nd) O(nd)
+BucketSort O(n) O(n) O(nlogn)
+
+* algoritmos vistos em detalhe nesta disciplina (com relacdo de recorréncia, arvore de
+recursdo e/ou exemplo passo a passo).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 20 ---
+Resumo Geral: Algoritmos de Busca bag aa may
+
+Algoritmo Melhor Médio Pior
+
+Busca Linear* oO(1) O(n) O(n)
+Busca Binaria* O(1) O(logn) O(logn)
+
+* algoritmos vistos em detalhe nesta disciplina.
+
+@ A Busca Binaria exige um vetor ordenado; a Busca Linear funciona
+em qualquer vetor;
+
+@ Essa é a mesma troca vista em varios algoritmos: usar uma
+propriedade adicional dos dados (ordenacao, intervalo de valores
+conhecido) para obter uma complexidade melhor.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 21 ---
+Universidade
+
+Panorama geral de Fortaleza
+
+@ O(n’) em todos os casos: Ordenacao por Selecdo — sempre
+percorre o trecho restante inteiro, nado importa a entrada;
+
+@ O(n) no melhor caso, O(n”) nos demais: Bubble Sort e Insertion
+Sort — se beneficiam de entradas quase ordenadas;
+
+@ O(nlogn) em todos os casos: MergeSort e Heap Sort — garantia
+sempre boa, independente da entrada;
+
+@ O(nlogn) em média, O(n”) no pior caso: QuickSort — rapido na
+pratica, mas sensivel a escolha do pivo;
+
+@ Sem comparacoes: Counting Sort, Radix Sort e Bucket Sort —
+trocam generalidade por velocidade, aproveitando caracteristicas
+especificas dos dados (valores inteiros, intervalo conhecido).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 22 ---
+Revisao para a AV2
+
+Simular passo a passo cada algoritmo em um vetor dado;
+Escrever 0 pseudocddigo (recursivo e iterativo);
+
+Montar e resolver a relacdo de recorréncia de cada algoritmo;
+Justificar melhor caso, caso médio e pior caso;
+
+Comparar algoritmos quanto a tempo, espaco e estabilidade;
+
+Argumentar o limite inferior 2(nlogn) e explicar por que o Counting Sort o
+“contorna”.
+
+Laboratoério (30%): implementar e comparar empiricamente os algoritmos de
+ordenacao em vetores aleatorios, j4 ordenados e inversamente ordenados — con-
+frontando os tempos medidos com a previsao tedrica da Unidade I.
+
+io Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 23 ---
+ze Universidade
+Duvidas? de Fortaleza
+
+Perguntas? Vamos para a AV2?
+
+io Marques Silva CANA - Const. ¢ Ar de Algoritmos

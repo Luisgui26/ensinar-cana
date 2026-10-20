@@ -1,0 +1,1389 @@
+
+--- PÁGINA 1 ---
+O que é o Insertion Sort?
+
+@ E um algoritmo de ordenacio que constréi 0 vetor ordenado um
+elemento por vez, inserindo cada novo elemento na posicao correta
+entre os ja ordenados.
+
+@ Em sua versao recursiva, a cada execucao parcial o algoritmo:
+
+® primeiro ordena recursivamente todo o trecho exceto o ultimo
+elemento;
+
+e depois, insere esse ultimo elemento na posicao correta dentro do
+trecho ja ordenado, deslocando os maiores para abrir espaco: custo
+Q(n) no pior caso.
+
+E como organizar um baralho na mao: vocé pega uma carta nova e a
+insere na posic¢ao correta entre as cartas que ja estao ordenadas.
+
+aio Marques Silvz CANA - Const. ¢ Ar de Algoritmos
+
+
+--- PÁGINA 2 ---
+Pseudocddigo do Insertion Sort (Recursiva Universicjade
+
+de Fortaleza
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posic¢ées ini e fim
+1 funcdo insertionSort (yy, ini, fim):
+2 if ini > fim then
+3 | return ; // condig&éo de parada
+4 insertionSort(y, ini, fim—1); // ordena os anteriores
+5 chave — v[ fim];
+6 | j-fim—1;
+7 | while j > ini e v[j]>chave do
+8 vii +1] — vf];
+9 j-j-1;
+0 v[j +1] —chave;
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 3 ---
+Pseudocddigo do Insertion Sort (Iterativa) pyar ey
+
+de Fortaleza
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posic¢6es ini e fim
+
+1 funcao insertionSortIterativo(y, ini, fim):
+2 for i — ini+ 1 to fim do
+3 chave — v[i];
+4 j<i-];
+5 while j > ini e v[j] > chave do
+6 vjit+1] vj];
+7 | joj-l;
+v[j +1] —chave;
+
+--)
+
+Mesma ideia da versdo recursiva, mas com um laco externo percorrendo
+os elementos e um laco interno (0 while) fazendo a insercao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+
+--- PÁGINA 4 ---
+Universidade
+
+Exemplo passo a passo de Fortaleza
+
+Vamos simular o Insertion Sort no mesmo vetor reduzido usado no Bubble
+Sort, para facilitar a comparagao:
+
+v=[5, 2, 8, -3, 9, 1]
+
+Em cada passagem, um novo elemento é inserido no trecho ja ordenado:
+
+azul — trecho ja ordenado (a esquerda);
+-vermelho | — elemento sendo inserido nessa passagem.
+
+Cada passagem mostra 0 vetor antes — depois da insercao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 5 ---
+Universidade
+
+1? passagem de Fortaleza
+
+[5, 2,839.1] >[ 2, .5,8,-3,9,1]
+
+2 <5: desloca o 5 uma posicao a direita e insere 0 2 no inicio.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 6 ---
+Universidade
+
+2? passagem de Fortaleza
+
+2, 5, 8,-3,9,1] >[ 2, 25 8, -3,9,1]
+
+8 > 5: nenhum deslocamento é necessario, 0 8 ja esta na posicao correta.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 7 ---
+Universidade
+
+3° passagem as Portales
+
+{ 2, 5) F 8, 3,91) >[ 3, 2), Se, 8,9,1]
+
+—3 é menor que todos os elementos ordenados: desloca 8, 5 e 2, e insere
+—3 no inicio.
+
+Prof. M.Sc. Caio Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 8 ---
+Universidade
+
+4° passagem de Fortaleza
+
+[}3, 2, 5, 8, 9,1] >[ 3, 2, 5, 8, 9,1]
+
+9 > 8: nenhum deslocamento é necessiario, 0 9 ja esta na posicao correta.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos 29 pro d ) 190 / 410
+
+
+--- PÁGINA 9 ---
+5 passagem (ultima) de Fortelers
+
+(3, /2,/5,/8, 9, 1] >(/3,/1,/2,/5, 8, 9)
+
+1 desloca 9, 8, 5 e 2, e é inserido logo apds o —3.
+
+Vetor totalmente ordenado:
+[-3, 1, 2, 5, 8,9]
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 10 ---
+Universidade
+
+Estratégia recursiva de Fortaleza
+
+@ Apenas uma chamada recursiva é feita, sobre o trecho sem o ultimo
+elemento.
+
+@ Diferente do Bubble Sort e da Ordenacdo por Selecdo, aqui a recursao
+acontece antes do trabalho: primeiro ordena-se o restante, depois
+insere-se o elemento atual.
+
+@ A insercao pode exigir deslocar até todos os elementos ja ordenados:
+custo @(n) no pior caso.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 11 ---
+Construindo a relacao de recorréncia
+
+A relacao de recorréncia é usada para analisar a versao recursiva, considerando
+o pior caso. A primeira etapa para identificar a classe de complexidade do
+Insertion Sort é escrever essa relacdo:
+
+T(n) = T(n—1)+ O(n)
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 12 ---
+Universidad
+
+Construindo a relacao de recorréncia vag ser ma
+
+A relacdo de recorréncia é usada para analisar a versao recursiva, considerando
+o pior caso. A primeira etapa para identificar a classe de complexidade do
+Insertion Sort é escrever essa relacao:
+
+Formulacao inicial
+
+T(n) = T(n—1) + O(n)
+
+Simplificando:
+
+Forma simplificada
+
+T(n)=T(n—1)+n
+
+onde n = fim —ini+ 1 (o tamanho do trecho a ordenar).
+
+caio Marques Silva i const. € de Algoritmos
+
+
+--- PÁGINA 13 ---
+Interpretando cada termo
+
+T(n)= T(n-1) + 27
+—— “TZ
+chamada recursiva nsercao
+
+T(n—1)
+Representa a inica chamada recursiva, que ordena o trecho com um
+elemento a menos (todos exceto o ultimo).
+
++n
+
+Representa o custo de inserir o ultimo elemento na posicao correta.
+
+@ No pior caso (elemento deve ir para o inicio), é preciso deslocar
+todos os n—1 elementos ja ordenados;
+
+@ Por isso, custo linear: O(n).
+
+io Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 14 ---
+Relacao de recorréncia do Insertion Sort S$ p vag loot mg
+
+T(n) =T(n—1)+n
+
+Essa é a mesma forma de recorréncia do Bubble Sort e da Ordenacao
+por Selecdo: nao se encaixa no Teorema Mestre e o custo fora da chamada
+
+recursiva muda a cada nivel.
+
+Vamos resolvé-la pela arvore de recursao.
+
+CANA - Const. ¢ Andlise de Algoritmos
+
+Prof. M.Sc. Caio Marques Silva
+
+
+--- PÁGINA 15 ---
+Resolvendo a recorréncia: Arvore de Recur
+
+Vamos ilustrar a arvore de recursdo gerada por
+
+T(n)=T(n—1)+n
+
+Caracteristicas dessa arvore:
+
+@ E uma cadeia (um no por nivel), pois ha apenas 1 chamada
+recursiva por passo;
+
+@ Cada né filho reduz a entrada do n6é pai em apenas 1 — resume-se
+em T(n—1);
+
+@ Ocusto de cada né é proporcional ao tamanho da sua entrada, e por
+isso diminui a cada nivel — resume-se no termo +n.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 16 ---
+, ~ ° Universidade
+Arvore de Recursao do Insertion Sort da Fortelaze
+
+C:) Nivel0:  custon
+
+1 Nivel 1: custon—1
+Nivel 2: custon—2
+Nivel h: custo 1
+
+A cada nivel, o trecho a ordenar (e, no pior caso, a deslocar) é um elemento
+menor, a mesma estrutura vista no Bubble Sort e na Ordenagao por Selecao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 17 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando 0 tamanho do trecho chega a 0 (condicado
+de parada ini >= fim):
+n—h=0
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos 29 26 198 / 410
+
+
+--- PÁGINA 18 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho do trecho chega a 0 (condicao
+de parada ini >= fim):
+
+Isolando h:
+
+A altura da arvore é proporcional a n, e o custo por nivel nao é o mesmo
+em todos os niveis.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos 29 26 198 / 410
+
+
+--- PÁGINA 19 ---
+Funcao do tempo de execucéo pg oe my
+
+Como o custo de cada nivel muda a cada nivel, precisamos somar os
+custos de todos os niveis:
+
+f(n)=n+(n—1)+(n—2)+-+-+241
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 20 ---
+Funcao do tempo de execucéo GS sereseete
+
+Como o custo de cada nivel muda a cada nivel, precisamos somar os
+custos de todos os niveis:
+
+f(n) =n+(n—1)+(n—2)4+--+241
+
+Essa é a soma dos n primeiros numeros naturais:
+
+n:(n+1)_n?+n
+
+fn) = ;
+
+O termo dominante é n?, logo f(n) = Q(n?).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 21 ---
+Universidade
+de Fortaleza
+
+Resultado final
+
+T(n) = Q(n?)
+
+@ Resolvendo a recorréncia T(n) = T(n—1) +n pela arvore de recursdo,
+obtemos um tempo de execucao quadratico no pior caso;
+
+@ No pior caso (vetor em ordem decrescente), cada insergao desloca
+todos os elementos ja ordenados: @(n?);
+
+@ No melhor caso (vetor ja ordenado), cada elemento é inserido sem
+deslocamentos, apenas com uma comparacéo: O(n);
+
+@ Diferente do Bubble Sort e da Selecao, o Insertion Sort é sensivel a
+ordem de entrada, funciona bem em vetores quase ordenados.
+
+f, M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos DI 200 / 410
+
+
+--- PÁGINA 22 ---
+Universidade
+
+Analisando a versao iterativa de Fortalez
+
+A versao iterativa nao é analisada por recorréncia, mas 0 raciocinio é
+
+direto: basta contar quantas vezes os lacos aninhados executam no pior
+caso.
+
+@ O laco externo executa n— 1 vezes (uma para cada elemento a
+inserir, do segundo ao ultimo);
+
+@ Para o i-ésimo elemento, o laco interno pode deslocar até i—1
+elementos no pior caso;
+
+@ Somando todas as iteracdes do laco interno:
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 23 ---
+. ~ es . Universidade
+Analisando a versao iterativa S$ de Fortaleza
+
+A versao iterativa nao é analisada por recorréncia, mas 0 raciocinio é
+direto: basta contar quantas vezes os lacos aninhados executam no pior
+caso.
+
+@ O laco externo executa n— 1 vezes (uma para cada elemento a
+inserir, do segundo ao ultimo);
+
+@ Para o i-ésimo elemento, o laco interno pode deslocar até i—1
+elementos no pior caso;
+
+@ Somando todas as iteracdes do laco interno:
+
+n(n—1)
+
+f(n)=1424---4(N—-D=—Z
+
+=> T(n)=@(n?)
+
+Mesma complexidade de tempo da versao recursiva, mas sem o custo de
+espaco das chamadas na pilha de recursao.
+
+Prof. M.Sc. Caio Marques Silva v - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 24 ---
+Universidade
+
+Recursiva vs. Iterativa de Fortaleza
+
+Recursiva Iterativa
+Tempo (pior caso) Q(n?) O(n?)
+Tempo (melhor caso) O(n) Q(n)
+Espaco extra O(n) (pilha) @(1)
+Analise recorréncia > arvore lacos aninhados
+
+@ As duas versdes fazem 0 mesmo numero de comparacoes e
+deslocamentos, em qualquer caso;
+
+@ A diferenca esta no uso de memoria: cada chamada recursiva ocupa
+espaco na pilha, enquanto a iterativa reutiliza as mesmas variaveis.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 25 ---
+Universidade
+
+Resumo de Fortalez
+
+@ O Insertion Sort constrdi o vetor ordenado um elemento por vez,
+inserindo cada novo elemento na posicao correta entre os ja
+ordenados.
+
+@ Versao recursiva: T(n) = T(n—1) +n (pior caso), resolvida pela
+arvore de recursao (altura h =n, custosn,n—1,...,1).
+
+@ Versao iterativa: laco externo + laco interno de deslocamento,
+somando até ~S— mae) D operacées.
+
+@ Complexidade final: Q(n?) no pior caso, Q(n) no melhor caso (vetor
+ja ordenado).
+
+@ A versao iterativa evita o custo de espaco extra da pilha de recursao.
+
+caio Marques Silva i const. € de Algoritmos
+
+
+--- PÁGINA 26 ---
+Comparando os trés algoritmos quadraticof¥epeered
+
+Algoritmo Melhor Médio Pior Trocas_ Estavel
+Selecao Q(n*) O(n*) O(n*) O(n) Nao
+
+Trocas Q(n)* O(n?) O(n?) O(n?) Sim
+Insercao @(n) O(n?) @E(n*) @E(n?) Sim
+
+* com a otimizacao de parada antecipada (nenhuma troca em uma passagem).
+
+@ Todos usam (1) de espaco extra (versGes iterativas);
+@ Um algoritmo é estavel se mantém a ordem relativa de chaves iguais;
+
+@ Na pratica, a Insergao é a mais rdpida das trés para n pequeno — por isso bibliotecas
+reais a usam dentro do Quicksort quando o subvetor fica curto.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 27 ---
+ros Universidade
+Diividas?
+
+Perguntas? Vamos programar?
+
+nio Marques Silva i const. ¢ Anilise de Algoritmos
+
+
+--- PÁGINA 28 ---
+Aula 09 - 29/09
+
+Ordenacao por intercalagado (Mergesort) e Quicksort
+
+
+
+--- PÁGINA 29 ---
+Universidade
+de Fortalez
+
+O que é o MergeSort?
+
+@ E um algoritmo de ordenacio baseado na estratégia dividir para
+conquistar (divide and conquer).
+@ Acada execucao parcial, o algoritmo:
+e faz duas chamadas recursivas, dividindo o tamanho da entrada pela
+metade em cada uma;
+@ executa uma rotina de merge, responsavel por unir duas sequéncias ja
+ordenadas em uma tinica sequéncia ordenada.
+
+@ O custo dessa rotina de merge é dado por O(n).
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 30 ---
+Pseudocédigo do MergeSort jy ee soe
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posic¢6es ini e fim
+1 funcgdo mergeSort (, ini, fim):
+2 if ini > fim then
+3 | return ; // condig&o de parada
+meio < | (ini + fim)/2];
+mergeSort (1, ini, meio) ;
+mergeSort (v, meio + 1, fim);
+merge (v, ini, meio, fim);
+
+Naw +
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 31 ---
+1
+
+crn nw & WN
+
+Pseudocoédigo do Merge a som on
+
+Entrada: vetor v, indices ini, meio, fim
+Saida_ :vcomo intervalo [ini, fim] ordenado
+funcdo merge (y, ini, meio, fim):
+esq <— copia de v[ini... meio];
+dir — cépia de v[meio + 1... fim];
+i—0;j<—0; k — ini;
+while i < esq.length ej < dir.length do
+if esq[i] < dir[j] then
+| v[k] -esq[i]; ic i+];
+else
+|. v{k] —dir[j];j —j+1;
+kek+1;
+
+copia os elementos restantes de esq e dir para v;
+
+Percorre os dois subvetores uma tinica vez, comparando seus elementos
+=> custo O(n).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 32 ---
+Universidade
+
+Exemplo passo a passo de Fortaleza
+
+Vamos simular o MergeSort no mesmo vetor reduzido usado nos
+algoritmos anteriores:
+
+v=[5, 2, 8, -3, 9, 1]
+
+O algoritmo tem duas fases bem distintas, que vamos visualizar em arvore:
+Divisao — o vetor é dividido ao meio repetidamente até restarem
+elementos tnicos;
+
+Intercalacao (Merge) — os pedacos ja ordenados sao combinados de
+volta, dois a dois, até formar o vetor final.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 33 ---
+Universidade
+
+Fase de Divisao de Fortalez
+
+2)
+0 © 0 0
+
+A divisao para quando cada trecho tem apenas 1 elemento (trivialmente
+ordenado).
+
+caio Marques Silva i const. € de Algoritmos
+
+
+--- PÁGINA 34 ---
+Fase de Intercalacao (Merge) py res moe
+
+Cada merge combina dois trechos ja ordenados em tempo linear. O resultado
+final esta ordenado: [—3, 1, 2,5, 8,9].
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 35 ---
+Estratégia recursiva de Fortaleza
+
++ merge — O(n)
+
+@ Cada chamada recursiva resolve metade do problema original.
+
+@ Depois que as duas metades estdo ordenadas, o merge as combina
+em tempo linear.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 36 ---
+Construindo a relacao de recorréncia
+
+A primeira etapa para identificar a classe de complexidade do MergeSort é
+escrever sua relacao de recorréncia:
+
+T(n) = T(n/2) + T(n/2) + Q(n)
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 37 ---
+de Fortaleza
+
+Construindo a relacao de recorréncia S$ py er
+
+A primeira etapa para identificar a classe de complexidade do MergeSort é
+escrever sua relacao de recorréncia:
+
+Formulagao inicial
+
+T(n) = T(n/2) + T(n/2) + O(n)
+Simplificando:
+
+Forma simplificada
+
+T(n) = 2-T(n/2)+n
+
+onde n = v.length (o tamanho do vetor de entrada).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 38 ---
+Interpretando cada termo
+
+T(n)= 2:-T(n/2) +n
+
+merge
+
+chamadas recursivas
+
+2-T(n/2)
+Representa as duas chamadas recursivas, em que a entrada é dividida
+pela metade em cada uma delas.
+
++n
+
+Representa o custo da funcéo merge, que une duas sequéncias ja
+ordenadas em uma unica sequéncia ordenada.
+
+@ Nao é necessario saber como o merge é feito internamente;
+
+@ Basta saber que essa etapa tem custo linear.
+
+io Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 39 ---
+Relacao de recorréncia do MergeSort p vag loot mg
+
+T(n) =2-1(5)+n
+
+@ a=2-— ntmero de subproblemas gerados a cada chamada;
+e@ b=2 — fator pelo qual o tamanho da entrada é dividido;
+
+@ f(n) =n — custo do trabalho realizado fora das chamadas recursivas
+(o merge).
+
+Essa relacao esta no formato padrao exigido pelo Teorema Mestre, que
+pode ser usado para resolvé-la e obter a complexidade assintética do
+algoritmo.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 40 ---
+Resolvendo a recorréncia: Arvore de Recur
+
+Vamos ilustrar a arvore de recursdo gerada por
+
+T(n) =2-T(n/2)+n
+
+Diferencgas em relacao a arvore do fatorial:
+
+@ A arvore agora é binaria — 0 custo de um nivel é a soma dos custos
+de todos os nos desse nivel;
+
+@ As arestas representam as duas chamadas recursivas de cada passo;
+
+@ Cada no filho tem a entrada do no pai dividida pela metade >
+resume-se em 2-T(n/2);
+
+@ Cada no tem tempo de execucao linear em relacgdo ao tamanho da
+sua entrada — resume-se no termo +n.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 41 ---
+Arvore de Recurséo do MergeSort py as may
+
+Nivel 0: custon
+Nivel 1: custon/2+n/2=n
+Nivel 2: custo 4-n/4=n
+
+Nivelh: custon
+
+Cada nivel, do topo até a base da arvore, tem 0 mesmo custo total: n.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 42 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho da entrada de um no chega a
+1 (condigao de parada ini >= fim):
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 43 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho da entrada de um no chega a
+1 (condigao de parada ini >= fim):
+
+n
+a
+Isolando 2":
+2h=n
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 44 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho da entrada de um no chega a
+1 (condigao de parada ini >= fim):
+Isolando 2":
+
+Aplicando log, nos dois lados:
+
+h- log, 2 =log.n
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 45 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho da entrada de um no chega a
+1 (condigao de parada ini >= fim):
+
+Isolando 2":
+
+Aplicando log, nos dois lados:
+h- log, 2 =log.n
+Como log, 2 = 1, simplificando:
+
+h=logyn
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 46 ---
+Funcao do tempo de execucéo pg oe my
+
+Para obter o tempo total, somamos os custos de todos os niveis da arvore.
+
+@ Cada nivel tem custo n (ex.: 2-n/2, 4-n/4, 8-n/8,...);
+@ A arvore tem altura h = log, n, ou seja, log, n niveis;
+@ Somar n um total de log, n vezes:
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 47 ---
+Funcao do tempo de execucéo GS sereseete
+
+Para obter o tempo total, somamos os custos de todos os niveis da arvore.
+
+@ Cada nivel tem custo n (ex.: 2-n/2, 4-n/4, 8-n/8,...);
+@ A arvore tem altura h = log, n, ou seja, log, n niveis;
+
+@ Somar n um total de log, n vezes:
+
+f(n)=n+n+--:+n=n- logon
+. —<—
+
+log, n vezes
+
+Essa multiplicacao sé é valida porque todo nivel tem o mesmo custo n.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 48 ---
+Resultado final jy ee soe
+
+T(n) = O(n: logn)
+
+@ Resolvendo a recorréncia T(n) = 2T(n/2) +n pela arvore de recursao,
+chegamos a mesma conclusao que o Teorema Mestre indicaria;
+
+@ O MergeSort tem complexidade de tempo O(nlogn) em todos os
+casos (melhor, médio e pior);
+
+@ Essa é uma classe de complexidade melhor do que algoritmos @(n”),
+como Bubble Sort e Insertion Sort.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 49 ---
+Universidade
+Resumo de Fortaleza
+
+@ O MergeSort segue o paradigma de dividir para conquistar.
+
+@ Acada chamada, o problema é dividido em 2 subproblemas de
+tamanho n/2.
+
+@ Acombinacao das solucdes (merge) custa O(n).
+@ Relacao de recorréncia obtida:
+
+T(n) = 2T(n/2)+n
+@ Pela arvore de recursao: altura h = log, n, custo n por nivel >
+T(n) =n-logyn
+
+@ Complexidade final: T(n) = O(nlogn).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 50 ---
+Universidade
+
+Duvidas? de Fortaleza
+
+nio Marques Silva i const. ¢ Anilise de Algoritmos
+
+
+--- PÁGINA 51 ---
+O que é 0 QuickSort?
+
+@ E um algoritmo de ordenacio baseado em dividir para conquistar,
+assim como o MergeSort.
+@ A cada execugao parcial, o algoritmo:
+
+e escolhe um elemento como piv6 e particiona o vetor: menores que o
+piv6 a esquerda, maiores a direita — custo O(n);
+e faz duas chamadas recursivas, uma para cada lado da particao.
+
+@ Diferente do MergeSort, nao ha uma etapa de merge: ao final das
+duas chamadas recursivas, o vetor ja esta ordenado.
+
+Diferenca importante em relacdo ao MergeSort
+As duas partes geradas pela particao nao tém necessariamente 0 mesmo
+
+tamanho — isso depende da escolha do piv6, e afeta diretamente a
+complexidade do algoritmo.
+
+io Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 52 ---
+Pseudocdédigo do QuickSort (Recursiva) Universidade
+
+de Fortaleza
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posigées ini e fim
+
+1 funcgdo quickSort (yy, ini, fim):
+
+2 if ini < fim then
+
+3 p <— particionar (1, ini, fim);
+4 quickSort (y, ini, p—1);
+
+5 quickSort(y, p+ 1, fim);
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+
+--- PÁGINA 53 ---
+Pseudocddigo da Particao ns ma
+
+Entrada: vetor v, indices ini e fim
+Saida _: posicao final do pivd
+
+1 fungéo particionar (y, ini, fim):
+
+2 | pivo —v{[fim];
+
+3 i<ini—1;
+
+4 | forj <initofim—1do
+5 if v[j] < pivo then
+
+6 iit];
+
+7 troca v[i] e v[j];
+8 troca v[i+ 1] e v[fim];
+
+9 return i+ 1;
+
+Percorre o vetor uma tinica vez, movendo os elementos < pivo para a
+esquerda => custo O(n).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 54 ---
+Pseudocddigo do QuickSort (Iterativa) Universidade
+
+de Fortaleza
+
+Entrada: vetor v, indices ini e fim
+
+1 funcdo quickSortIterativo(y, ini, fim):
+pilha — vazia;
+empilha(ini, fim);
+while pilha ndo vazia do
+(ini, fim) <— desempilha();
+if ini < fim then
+p <— particionar (1, ini, fim);
+empilha(ini, p — 1);
+empilha(p + 1, fim);
+
+cCmnanrrt Wh
+
+Substitui a pilha de chamadas recursivas por uma pilha explicita de
+intervalos (ini, fim) a processar.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+
+--- PÁGINA 55 ---
+Universidade
+
+Exemplo passo a passo de Fortalez
+
+Vamos simular 0 QuickSort no mesmo vetor reduzido dos exemplos
+anteriores, usando o ultimo elemento como pivé em cada particao:
+
+v=[5, 2, 8, —3, 9, 1]
+
+-amarelo_ — 0 pivé sendo posicionado nesta etapa;
+
+azul — pivés de etapas anteriores, jd em sua posicao final.
+
+caio Marques Silva CANA - Const. € de Algoritmos
+
+
+--- PÁGINA 56 ---
+1° particionamento do Fortaleza
+
+Pivé escolhido: ultimo elemento do vetor.
+
+[5, 2, 8,-3,9, 1 ] > [-3, 1,8,5,9,2]
+
+O pivé 1 vai para o indice 1. A esquerda, apenas [—3] (j4 ordenado). A
+direita, o subvetor [8, 5, 9,2] ainda precisa ser particionado.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 57 ---
+Universidade
+
+2° particionamento (subvetor [8, 5,9, 2]) vag hos ma
+
+Pivé escolhido: ultimo elemento do subvetor.
+
+[-3,/1, 85,9, 2] >[-3, 1, 2,5,9,8]
+
+O pivé 2 vai para o indice 2. Nenhum elemento é menor que 2 nesse
+subvetor. A direita, o subvetor [5, 9,8] ainda precisa ser particionado.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 58 ---
+3° particionamento (subvetor [5, 9, 8]) Pet
+
+Pivé escolhido: ultimo elemento do subvetor.
+
+[-3,1, 2,5,9, 8] >[-3,1, 2,5, 8,9]
+
+O pivé 8 vai para o indice 4. A esquerda sobra [5] e a direita sobra [9] —
+ambos com um tnico elemento, portanto ja ordenados.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 59 ---
+Resultado final jy ee soe
+
+Todos os subvetores restantes tem no maximo 1 elemento (caso base da
+recursao): nao ha mais nada a particionar.
+
+Vetor totalmente ordenado:
+[-3, 1, 2, 9, 8, 9)
+Neste exemplo, cada particdo isolou apenas um elemento a esquerda do pivé —
+
+um padrao de particao bem desbalanceada, proximo do pior caso discutido mais
+adiante.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 60 ---
+Estratégia recursiva de Forteleze
+
+e@ k é0 ntmero de elementos menores que 0 pivé, isto é, o tamanho do
+lado esquerdo da particao;
+
+@ Otamanho dos dois lados depende de onde o pivé cai na particao —
+pode ser qualquer valor entre 0 en—1;
+
+@ Antes das chamadas recursivas, o algoritmo paga o custo linear da
+particao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 61 ---
+Construindo a relacao de recorréncia S$ p vag loot mg
+
+A primeira etapa para identificar a classe de complexidade do QuickSort é
+escrever sua relagao de recorréncia:
+
+Formulacao geral
+
+T(n) = T(k) + T(n—1—k)+ O(n)
+
+Diferente do MergeSort, aqui nao sabemos de antemao o tamanho dos
+subproblemas — isso depende da escolha do pivo. Por isso, analisamos
+dois casos extremos: particéo balanceada e particao totalmente
+desbalanceada.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 62 ---
+Universidade
+
+Analise da complexidade: trés cenarios ag “oe mang
+
+Diferente do MergeSort, no QuickSort o tamanho dos subproblemas
+depende de onde o pivé cai a cada particado. Por isso, vamos considerar
+trés cendrios distintos:
+
+@ Pior caso: o pivé é sempre o menor ou o maior elemento;
+@ Melhor caso: o pivé sempre divide a lista ao meio;
+@ Caso médio: a média sobre todas as particées possiveis.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 63 ---
+° Universidade
+Pior caso S$ de Fortaleza
+
+Ocorre quando o pivé é sempre o maior ou menor elemento, gerando
+partigdes totalmente desbalanceadas.
+
+Na primeira chamada, uma lista de tamanho n gera uma lista de tamanho
+n—1euma lista vazia. Isso nos da:
+
+T(n) = Tn—1)+T(0)+n=T(n—1)+n
+
+E exatamente a mesma recorréncia da Ordenacio por Selecao, do Bubble Sort
+e do Insertion Sort.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 64 ---
+Universidade
+de Fortaleza
+
+Arvore de recursao do pior caso
+
+~> custo n
+
+~> custon—1
+
+ree > custo n-2
+
+A cada nivel, a particao vazia (0) encerra imediatamente, enquanto o outro lado
+continua a cadeia — mesma estrutura em cadeia vista nos algoritmos de
+ordenacao anteriores.
+
+io Marques Silva CANA - Const. ¢ Ar de Algoritmos
+
+
+--- PÁGINA 65 ---
+Resolvendo o pior caso de Fortaleza
+
+Somando os custos de todos os niveis:
+
+n
+T(n)=14+24+3+---+(n-1)+n=)'k
+k=1
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 66 ---
+Resolvendo o pior caso
+
+Somando os custos de todos os niveis:
+
+T(n)=14+24+3+---+(n-1)+n=)'k
+k=1
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 67 ---
+Melhor caso GS sevessece
+
+Ocorre quando as duas particdes tém exatamente o mesmo tamanho:
+n/2 elementos, 0 piv, e mais n/2 elementos.
+
+Relacao de recorréncia
+
+T(n) = T(n/2)+ T(m/2)+n=2-T(n/2)+n
+
+E exatamente a mesma recorréncia do MergeSort — 0 custo n vem da func’o
+de particao, assim como no MergeSort vinha da fungao de merge.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 68 ---
+a a Universidade
+Arvore de recursao do melhor caso da Fortelaze
+
+Nivel 0: custon
+Nivel 1: custon
+Nivel 2: custon
+
+Nivelh: custon
+
+A arvore continua se dividindo até restar 1 elemento por folha:
+
+n
+pol => h=logyn.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 69 ---
+Universidade
+
+Resolvendo o melhor caso de Fortaleza
+
+Como a altura da arvore é h = log, n e o custo em cada nivel é n:
+
+T(n)=ntn+---4+n
+SS
+
+logs n vezes
+
+. Caio Marques Silva SANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 70 ---
+Universidade
+Resolvendo o melhor caso
+
+Como a altura da arvore é h = log, n e o custo em cada nivel é n:
+
+T(n)=n+n+---+n
+SS
+
+logs n vezes
+
+T(n) = O(nlog, n)
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 71 ---
+Universidade
+
+Por que 0 QuickSort funciona bem na prati@A Re ystass
+
+@ Uma estratégia empirica comum: escolher o piv6 como a mediana
+entre o primeiro, o elemento do meio e 0 ultimo (regra da
+mediana de 3) — reduz bastante a chance de partic6es ruins.
+
+@ A grande vantagem do QuickSort é que ele opera no modo caso
+médio praticamente sempre;
+
+@ Mesmo com particdes consistentemente desiguais — por exemplo,
+sempre 90%-10% — o algoritmo ainda é O(nlogn).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 72 ---
+Arvore de recursdo para uma particdo 90/ PARES
+
+@ Ramo vermelho (sempre 10%): o mais curto da arvore, altura
+hy, = login;
+
+@ Ramo azul (sempre 90%): o mais longo da arvore, altura
+hp = logy jo N.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 73 ---
+Resolvendo o caso 90/10
+
+@ Até o nivel h,, todo nivel da arvore tem custo n;
+
+@ Depois de h;, 0 custo por nivel é menor que n (pois ja restam ramos
+vazios/encerrados);
+
+@ Somando todos os niveis (usando a altura do ramo mais longo como
+limite superior):
+
+T(n) Sc-n-logigjgn
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 74 ---
+Resolvendo o caso 90/10 GS sevessece
+
+@ Até o nivel h,, todo nivel da arvore tem custo n;
+
+@ Depois de h;, 0 custo por nivel é menor que n (pois ja restam ramos
+vazios/encerrados);
+
+@ Somando todos os niveis (usando a altura do ramo mais longo como
+limite superior):
+
+T(n) Sc-n-logigjgn
+
+Como logjo/9 ¥ 6,578 - log, n (uma constante multiplicativa),
+concluimos:
+T(n) = O(nlogn)
+
+Mesmo uma particdo bem desigual ainda resulta em complexidade O(n logn).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 75 ---
+Universidade
+de Fortaleza
+
+Resultado final
+
+T(n) = O(nlogn) (melhor e caso médio)
+
+T(n) = O(n?) (pior caso)
+
+@ O QuickSort é, na pratica, tao rapido quanto o MergeSort e o Heap
+Sort — porque o caso médio domina;
+
+@ O pior caso O(n?) exige uma escolha consistentemente ruim de pivé
+(ex.: sempre o menor/maior elemento em um vetor ja ordenado);
+
+@ Estratégias como a mediana de trés ou escolher o piv6
+aleatoriamente tornam o pior caso extremamente improvavel.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 76 ---
+Universidade
+
+Analisando a versao iterativa de Fortaleza
+
+A versdo iterativa realiza exatamente as mesmas particdes que a
+recursiva — apenas substitui a pilha de chamadas por uma pilha explicita
+de intervalos.
+
+@ As complexidades de tempo sdo as mesmas da versao recursiva:
+O(nlogn) no melhor caso e no caso médio, O(n?) no pior caso;
+
+@ A vantagem esta no controle do espaco: com a pilha explicita, é
+possivel empilhar sempre 0 lado maior da particao e continuar
+imediatamente no lado menor, garantindo pilha de tamanho
+OQ(logn) mesmo no pior caso de desbalanceamento.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 77 ---
+Universidade
+
+Recursiva vs. Iterativa de Fortaleza
+
+Recursiva Iterativa
+Tempo (melhor/médio) O(nlogn) O(nlogn)
+Tempo (pior caso) O(n?) O(n?)
+
+Espaco extra (pior caso) O©(n) (pilha) ©(n) ou O(logn)*
+* com a otimizacao de empilhar sempre o lado maior da partido.
+@ As duas versGes fazem as mesmas comparacoes e trocas;
+
+@ A iterativa permite controlar melhor o uso de memoria, algo que a recursiva nao
+oferece diretamente.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 78 ---
+Universidade
+Resumo de Fortaleza
+
+@ O QuickSort particiona o vetor em torno de um pivé e recursa nas
+duas partes; nao ha etapa de merge.
+
+@ Pior caso: T(n) = T(n—1) +n (particao vazia + n—1) > O(n”).
+
+@ Melhor caso: T(n) = 2T(n/2) +n (partic6es iguais, igual ao
+MergeSort) > O(nlogn).
+
+@ Caso médio: média sobre todas as particdes possiveis, resolvida por
+manipulacao algébrica e telescopagem => também O(nlogn).
+
+@ Mesmo com particdes desiguais na pratica (ex.: 90%-10%), o
+algoritmo continua O(n logn) — por isso 0 QuickSort é tao usado.
+
+@ Vers6es recursiva e iterativa ttm a mesma complexidade de tempo;
+
+a iterativa pode limitar o espaco extra a O(logn) com a escolha certa
+de qual lado empilhar.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 79 ---
+MergeSort x QuickSort de Forteleze
+
+MergeSort QuickSort
+Melhor caso O(nlogn) O(nlogn)
+Caso médio O(nlogn) O(nlogn)
+Pior caso Q(nlogn) Q(n?)
+Espaco extra Q(n) O(logn) (pilha)
+Estavel Sim Nao
+
+Onde brilha _dados externos, listas memoria interna, cache
+
+Ideia-chave
+
+Na pratica, o QuickSort costuma ser mais rapido por ter constantes menores
+e trabalhar in place; o MergeSort oferece a garantia de nlogn em todos os
+casos.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 80 ---
+ros Universidade
+Duividas?
+
+Perguntas? Vamos programar?
+
+nio Marques Silva i const. ¢ Anilise de Algoritmos

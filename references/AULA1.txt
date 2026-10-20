@@ -1,0 +1,941 @@
+
+--- PÁGINA 1 ---
+O que é a Ordenacao por Selecao?
+
+@ O Selection Sort é um algoritmo de ordenagao simples: a cada passo,
+seleciona o menor elemento do trecho ainda nao ordenado e 0
+coloca em sua posicao correta.
+
+@ A cada execucao parcial, o algoritmo:
+
+® percorre todo o trecho restante a procura do menor valor (custo @(n));
+
+@ troca esse valor com o primeiro elemento do trecho restante;
+
+e faz apenas uma chamada recursiva sobre o restante do vetor, agora
+com um elemento a menos.
+
+Diferenca importante em relacdo as buscas
+
+Aqui, 0 custo de cada chamada n@o é constante: encontrar o menor
+elemento exige percorrer todo o trecho restante, cujo tamanho diminui a
+cada passo.
+
+io Marques Silva CANA - Const. ¢ Ar de Algoritmos
+
+
+--- PÁGINA 2 ---
+de Vonaleza
+
+Pseudocddigo da Ordenacao por Selecao ( S$ Universtlode
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posic6es ini e fim
+1 fungao selecao(y, ini, fim):
+2 if ini > fim then
+3 |. return ; // condig&éo de parada
+menor <— ini;
+for j — ini+ 1 to fim do
+| if v[j] < v[menor] then
+
+nu aoauw fs
+
+| menor <j;
+
+troca v[ini] e v[menor];
+selecao(y, ini+1, fim);
+
+ow
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+
+--- PÁGINA 3 ---
+1
+
+2
+3
+4
+5
+6
+
+“
+
+Pseudocddigo da Ordenacao por Selecao (I
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posic¢ées ini e fim
+
+fungao selecaoIterativa(, ini, fim):
+for i <— ini to fim—1 do
+menor <1;
+for j —i+1 to fim do
+if v[j] < v[menor] then
+| | menor <j;
+
+troca v[i] e v[menor];
+
+Mesma ideia da versao recursiva, mas com dois lacos aninhados: o
+
+externo percorre as posic¢6es, o interno procura o menor elemento
+restante.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 4 ---
+Universidade
+
+Exemplo passo a passo de Fortaleza
+
+Vamos simular a Ordenacao por Selec4o no mesmo vetor reduzido usado
+no Bubble Sort e no Insertion Sort:
+
+v=[5, 2, 8, -3, 9,1]
+
+Em cada passagem, buscamos 0 menor elemento do trecho restante:
+
+-vermelho | — o elemento da posicdo atual e o menor encontrado no
+trecho restante (antes da troca);
+
+azul — as mesmas duas posicées, ja trocadas (depois).
+
+Quando o menor elemento ja esta na posicao atual, apenas um destaque aparece
+— nao ha troca.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 5 ---
+Universidade
+
+1? passagem as Portales
+
+[5,28 3,91] >[ 3,2,8,5,9,1]
+
+O menor elemento do vetor inteiro é —3: troca com a posicao 0.
+
+Prof. M.Sc. Caio Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 6 ---
+Universidade
+
+2° passagem ae Foutaieds
+
+[-3, 2,8,5,9, 1] >[-3,1,8,5,9, 2]
+
+O menor do trecho restante [2,8,5,9,1] é 1: troca com a posic¢ao 1.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 7 ---
+3* passagem de Fortaleza
+
+[-3,1, 8,5,9, 2] >[-3,1, 2,5,9, 8]
+
+O menor do trecho restante [8,5,9,2] é 2: troca com a posicao 2.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 8 ---
+Universidade
+
+4° passagem ae Foutaieds
+
+[-3,1,2, 5,9,8] >[-3,12, 5,9,8]
+
+O menor do trecho restante [5,9, 8] é o proprio 5: nenhuma troca é
+necessaria.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 9 ---
+5 passagem (ultima) jig iene
+
+[-3,1,2,5, 9, 8] >[-3,1,2,5,.8, 9]
+
+O menor do trecho restante [9,8] é 8: troca com a posicao 4.
+
+Vetor totalmente ordenado:
+[-3, 1, 2, 5, 8,9]
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 10 ---
+Universidade
+
+Estratégia recursiva de Fortaleza
+
+@ Apenas uma chamada recursiva é feita, sobre o vetor sem o
+elemento ja posicionado.
+
+@ Antes de recursar, o algoritmo percorre todo o trecho restante para
+encontrar o menor elemento: custo Q(n).
+
+@ Diferente das buscas, esse custo nao é constante — depende do
+tamanho da entrada atual.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 11 ---
+Construindo a relacao de recorréncia
+
+A relacao de recorréncia é usada para analisar a versao recursiva. A primeira
+etapa para identificar a classe de complexidade da Ordenacao por Selegao é
+escrever essa relacao:
+
+T(n) = T(n—1)+ O(n)
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 12 ---
+Construindo a relacao de recorréncia p vag loot mg
+
+i
+
+A relacdo de recorréncia é usada para analisar a versao recursiva. A primeira
+etapa para identificar a classe de complexidade da Ordenacao por Selecao é
+escrever essa relacao:
+
+Formulacao inicial
+
+T(n) = T(n—1)+ O(n)
+Simplificando:
+
+Forma simplificada
+
+T(n)=T(n—1)+n
+
+onde n = fim —ini+ 1 (o tamanho do trecho ainda nao ordenado).
+
+Prof. M.Sc. Caio Marques Silva x - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 13 ---
+Interpretando cada termo
+
+T(n)= T(n-1) + wt
+
+chamada recursiva busca pelo menor
+
+T(n—1)
+
+Representa a tunica chamada recursiva, feita sobre o restante do vetor,
+que tem um elemento a menos que a entrada atual (o menor ja foi
+posicionado).
+
++n
+Representa o custo de percorrer o trecho restante procurando o menor
+elemento.
+
+@ Precisa comparar todos os elementos do trecho;
+
+@ Por isso, custo linear: O(n).
+
+io Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 14 ---
+Relacao de recorréncia da Ordenagao por S S fbf dbo meg
+
+T(n) =T(n—1)+n
+
+Assim como na Busca Linear, essa recorréncia nao esta no formato exigido
+pelo Teorema Mestre, pois a entrada nao é dividida por um fator b — ela
+apenas decresce em 1 a cada chamada.
+
+Além disso, aqui 0 custo fora da chamada recursiva nao é constante: ele
+muda a cada nivel. Vamos resolver pela arvore de recursao.
+
+. Caio Marques Silva SANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 15 ---
+Resolvendo a recorréncia: Arvore de Recur
+
+Vamos ilustrar a arvore de recursdo gerada por
+
+T(n)=T(n—1)+n
+
+Diferencas em relacao as arvores anteriores:
+
+@ A arvore continua sendo uma cadeia (um no por nivel), pois ha
+apenas 1 chamada recursiva por passo;
+
+@ Cada no filho reduz a entrada do né pai em apenas 1 — resume-se
+em T(n—1);
+
+@ Diferente da Busca Linear, o custo de cada no nao é constante: ele é
+proporcional ao tamanho da entrada daquele né — resume-se no
+termo +n.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 16 ---
+Arvore de Recursao da Ordenacdo por SeleGepyererd
+
+Nivel 0: custon
+Nivel 1: custon—1
+Nivel 2: custon—2
+
+Nivel h: custo 1
+
+A arvore tem um no por nivel, mas 0 custo de cada nivel diminui
+conforme a arvore cresce. :
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 17 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho da entrada chega a 0
+(condicao de parada ini >= fim):
+
+n—h=0
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 18 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho da entrada chega a 0
+(condicao de parada ini >= fim):
+
+Isolando h:
+
+Assim como na Busca Linear, a altura da arvore é proporcional an. A
+diferenga agora é que o custo por nivel nao é o mesmo em todos os
+niveis.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 19 ---
+Funcao do tempo de execucéo pg oe my
+
+Como o custo de cada nivel muda a cada nivel, ndo podemos
+simplesmente multiplicar altura por custo. Precisamos somar os custos de
+todos os niveis:
+
+f(n)=n+(n—1)+(n—2)4+---+24+1
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 20 ---
+Funcao do tempo de execucéo GS sereseete
+
+Como o custo de cada nivel muda a cada nivel, nado podemos
+simplesmente multiplicar altura por custo. Precisamos somar os custos de
+todos os niveis:
+
+f(n)=n+(n—1)+(n—2)4+---+24+1
+
+Essa é a soma dos n primeiros nimeros naturais, cujo resultado é
+conhecido:
+
+O termo dominante é n?, logo f(n) = @(n?).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 21 ---
+Universidade
+de Fortaleza
+
+Resultado final
+
+T(n) = Q(n?)
+
+@ Resolvendo a recorréncia T(n) = T(n—1) +n pela arvore de recurso,
+obtemos um tempo de execucaéo quadratico;
+
+@ A Ordenacio por Selecdo tem complexidade @(n”) em todos os
+casos (melhor, médio e pior) — ela sempre percorre o trecho restante
+inteiro em busca do menor elemento, mesmo que 0 vetor ja esteja
+ordenado;
+
+@ E mais lenta que o MergeSort (@(nlogn)), mas mais simples de
+implementar e ndo usa memoria extra.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 22 ---
+Universidade
+
+Analisando a versao iterativa de Fortalez
+
+A versao iterativa nao é analisada por recorréncia, mas 0 raciocinio é
+direto: basta contar quantas vezes os lacos aninhados executam.
+
+@ O laco externo executa n vezes (uma para cada posicao a preencher);
+
+@ Para cada posicao i, 0 laco interno percorre os elementos restantes:
+n—i comparacées;
+
+@ Somando todas as iteracgdes do laco interno:
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 23 ---
+. ~ es . Universidade
+Analisando a versao iterativa S$ de Fortaleza
+
+A versao iterativa nao é analisada por recorréncia, mas 0 raciocinio é
+direto: basta contar quantas vezes os lacos aninhados executam.
+
+@ O laco externo executa n vezes (uma para cada posicao a preencher);
+
+@ Para cada posicao i, 0 laco interno percorre os elementos restantes:
+n—icomparacoes;
+
+@ Somando todas as iteragdes do laco interno:
+
+n(n+1)
+
+f(n) =n+(n—1)4+---41= => T(n) =@(n?)
+
+Mesma complexidade de tempo da versao recursiva, mas sem o custo de
+espaco das chamadas na pilha de recursao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 24 ---
+e e Universidade
+Recursiva vs. Iterativa de Fortaleza
+
+Recursiva Iterativa
+Tempo (todos os casos) @(n?) @(n?)
+Espaco extra O(n) (pilha) @(1)
+Andlise recorréncia — arvore lacos aninhados
+
+@ As duas vers6es fazem 0 mesmo numero de comparacées, em
+qualquer caso;
+
+@ A diferenca esté no uso de memoria: cada chamada recursiva ocupa
+espaco na pilha, enquanto a iterativa reutiliza as mesmas variaveis.
+
+Prof. M.Sc. Caio Marques Silva
+
+CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 25 ---
+Universidade
+
+Resumo de Fortalez
+
+@ A Ordenacao por Selecdo, a cada passo, escolhe o menor elemento
+do trecho restante e o posiciona.
+
+@ Versao recursiva: T(n) = T(n—1) +n, resolvida pela arvore de
+recursao (altura h =n, custosn,n—1,...,1).
+
+@ Versao iterativa: dois lagos aninhados, somando n+ (n—1)+-:-+1
+comparacoes.
+
+@ Ambas as versdes chegam a mesma complexidade final:
+T(n) = Q(n?), em todos os casos.
+
+@ A versao iterativa evita o custo de espaco extra da pilha de recursao.
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 26 ---
+ye Universidad
+Duvidas? de Fortaleza
+
+Perguntas? Vamos programar?
+
+- Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 27 ---
+O que é o Bubble Sort?
+
+@ E um algoritmo de ordenacio simples: a cada passagem, compara
+elementos adjacentes e os troca de posicao quando estao fora de
+ordem.
+
+@ Acada execucao parcial, o algoritmo:
+
+@ percorre o trecho ainda nao ordenado, comparando cada par
+(vUj], vii + 1]) e trocando-os se necessario: custo Q(n);
+
+e ao final da passagem, o maior elemento do trecho ja esta na sua
+posicao final (foi “borbulhado” até o fim);
+
+e faz apenas uma chamada recursiva sobre o restante do vetor, agora
+com um elemento a menos para ordenar.
+
+Por que “Bubble” Sort?
+
+A cada passagem, o maior elemento ainda nao posicionado “sobe”
+(borbulha) gradualmente até sua posicao correta, através de trocas
+sucessivas com o vizinho.
+
+io Marques Silva CANA - Const. ¢ Ar de Algoritmos
+
+
+--- PÁGINA 28 ---
+Pseudocddigo do Bubble Sort (Recursiva) Universidade
+
+de Fortaleza
+
+Entrada: vetor v, indices ini e fim
+
+Saida_: v ordenado entre as posicgées ini e fim
+1 funcao bubbleSort (y, ini, fim):
+if fim < ini then
+
+| return ; // condigéo de parada
+for j <— ini to fim—1 do
+if vj] > v[j+1] then
+| troca v[j] e v[j+1];
+
+aun Ff wWwhN
+
+“
+
+bubbleSort (y, ini, fim—1) ; // maior ja esta em fim
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+
+--- PÁGINA 29 ---
+Pseudocdédigo do Bubble Sort (Iterativa) Universidade
+
+de Fortaleza
+
+Entrada: vetor v, indices ini e fim
+Saida_: v ordenado entre as posic¢6es ini e fim
+
+1 funcéo bubbleSortIterativo(y, ini, fim):
+2 for i — fim to ini+ 1 do
+
+3 for j — ini toi—1do
+
+4 if v[j] > v[j+1] then
+
+5 | | troca v[j] e v[j +1];
+
+O laco externo percorre i de forma decrescente, de fim até ini+ 1. Mesma ideia
+da verso recursiva, mas com dois lacgos aninhados: o externo controla até onde
+a passagem deve ir, o interno faz as comparagoes e trocas adjacentes.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 30 ---
+Universidade
+
+Exemplo passo a passo de Fortalez
+
+Para tornar o funcionamento do algoritmo bem visivel, vamos simular o
+Bubble Sort em um vetor pequeno:
+
+v=[5, 2, 8, -3, 9, 1]
+
+Em cada passagem, comparamos pares adjacentes:
+-vermelho | — os dois elementos foram comparados e nao trocaram
+de posicao;
+azul — os dois elementos foram comparados e trocaram de
+posicao.
+
+Ao final de cada passagem, 0 maior elemento restante ja esta na sua posicao final
+(mais a direita).
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 31 ---
+posi¢ao) de Fortaleza
+
+[ 2, 5,8,-3,9,1]
+
+[2,5, 8,-3,9,1]
+
+[ 2, 5, 3, 8,9,1]
+
+[2,5,-3, 8, 9,1]
+
+[ 2, 5, —3, 8, 1, 9]
+
+O 9 ja esta em sua posicao final.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 32 ---
+posicao) de Fortaleza
+
+[2,5,-3,81,9]
+
+[ 2, 3, 5,8,1,9]
+
+[2,-3, 5, 8,1,9]
+
+[ 2, -3, 5, 1, 8,9]
+
+O 8 ja esta em sua posicao final.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 33 ---
+antepentltima posicao) jig iene
+
+[ -3, 2,5, 1, 8,9]
+
+[-3, 2, 5,1,8,9]
+
+[-3, 2, 1, 5,89]
+
+O 5 ja esta em sua posicao final.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 34 ---
+4* passagem de Fortaleza
+
+[ 3, 2,1,5,8,9]
+
+[-3, 1, 2,5, 8,9]
+
+O 2 ja esta em sua posicao final.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos DI 26 140 / 296
+
+
+--- PÁGINA 35 ---
+5 passagem (ultima) jig iene
+
+[3,1,2,5,8,9]
+
+Vetor totalmente ordenado:
+[ -3, 1, 2, 5, 8, 9)
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 36 ---
+Universidade
+
+Estratégia recursiva de Fortaleza
+
+@ Apenas uma chamada recursiva é feita, sobre o vetor sem o maior
+elemento, que ja foi posicionado ao final.
+
+@ Antes de recursar, o algoritmo faz uma passagem completa pelo
+trecho atual, comparando pares adjacentes: custo @(n).
+
+@ Assim como na Ordenacao por Selegao, esse custo nao é constante
+— depende do tamanho da entrada atual.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 37 ---
+Construindo a relacao de recorréncia
+
+A relacao de recorréncia é usada para analisar a versao recursiva. A primeira
+etapa para identificar a classe de complexidade do Bubble Sort é escrever essa
+relacao:
+
+T(n) = T(n—1)+ O(n)
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 38 ---
+Construindo a relacao de recorréncia S$ p vag loot mg
+
+A relacao de recorréncia é usada para analisar a versao recursiva. A primeira
+etapa para identificar a classe de complexidade do Bubble Sort é escrever essa
+relacao:
+
+Formulacao inicial
+
+T(n) = T(n—1)+ O(n)
+
+Simplificando:
+
+Forma simplificada
+
+T(n)=T(n—1)+n
+
+onde n = fim —ini+ 1 (o tamanho do trecho ainda nao ordenado).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+
+--- PÁGINA 39 ---
+Interpretando cada termo
+
+T(n)= T(n-1) + n
+—_— Y ~
+chamada recursiva  Passagem de comparagoes
+
+T(n—1)
+Representa a unica chamada recursiva, feita sobre o restante do vetor,
+que tem um elemento a menos (0 maior ja foi posicionado ao final).
+
++n
+
+Representa o custo de percorrer o trecho atual comparando pares
+adjacentes e trocando-os quando necessario.
+
+@ Precisa comparar todos os pares vizinhos do trecho;
+
+@ Por isso, custo linear: O(n).
+
+io Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 40 ---
+Relacao de recorréncia do Bubble Sort
+
+T(n) =T(n—1)+n
+
+Essa é exatamente a mesma recorréncia da Ordenacao por Selecao: nao
+se encaixa no Teorema Mestre (decresce em 1, nao divide por b) e 0 custo
+fora da chamada recursiva muda a cada nivel.
+
+Vamos resolvé-la, mais uma vez, pela arvore de recursao.
+
+Prof. M.Sc. Caio Marques Silva LANA - Ci -¢ de Algoritmos
+
+
+--- PÁGINA 41 ---
+Resolvendo a recorréncia: Arvore de Recur
+
+Vamos ilustrar a arvore de recursdo gerada por
+
+T(n)=T(n—1)+n
+
+Caracteristicas dessa arvore:
+
+@ E uma cadeia (um no por nivel), pois ha apenas 1 chamada
+recursiva por passo;
+
+@ Cada no filho reduz a entrada do n6é pai em apenas 1 — resume-se
+em T(n—1);
+
+@ Ocusto de cada né é proporcional ao tamanho da sua entrada, e por
+isso diminui a cada nivel — resume-se no termo +n.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 42 ---
+Arvore de Recursao do Bubble Sort de Fortaleza
+
+Nivel h:
+
+Nivel 0:
+Nivel 1:
+Nivel 2:
+
+Universidade
+
+custo n
+custon—1
+custo n—2
+custo 1
+
+A cada passagem, o trecho a percorrer é um elemento menor — a mesma
+estrutura vista na Ordenacao por Selecao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 43 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho do trecho chega a 0 (condicado
+de parada fim <= ini):
+n—h=0
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 44 ---
+’ Universidade
+Calculando a altura da arvore da Fortelaze
+
+A arvore para de crescer quando o tamanho do trecho chega a 0 (condicado
+de parada fim <= ini):
+
+Isolando h:
+
+A altura da arvore é proporcional a n, e o custo por nivel nao é o mesmo
+em todos os niveis.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 45 ---
+Funcao do tempo de execucéo pg oe my
+
+Como 0 custo de cada nivel muda a cada nivel, precisamos somar os
+custos de todos os niveis:
+
+f(n)=n+(n—1)+(n—2)4+-+-+241
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 46 ---
+Funcao do tempo de execucéo GS sereseete
+
+Como o custo de cada nivel muda a cada nivel, precisamos somar os
+custos de todos os niveis:
+
+f(n) =n+(n—1)+(n—2)4+--+241
+
+Essa é a soma dos n primeiros nimeros naturais:
+
+n-(n+1)_n?+n
+
+fn) = ;
+
+O termo dominante é n?, logo f(n) = Q(n?).
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 47 ---
+Universidade
+de Fortaleza
+
+Resultado final
+
+T(n) = Q(n’)
+
+@ Resolvendo a recorréncia T(n) = T(n—1) +n pela arvore de recursao,
+obtemos um tempo de execucaéo quadratico;
+
+@ No pior caso (vetor em ordem decrescente) e no caso médio, o
+Bubble Sort tem complexidade @(n?);
+
+@ No melhor caso (vetor ja ordenado), uma versao otimizada que para
+antecipadamente ao nao detectar trocas em uma passagem alcanca
+O(n) — mas o pseudocddigo apresentado aqui nao inclui essa
+otimizacao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 48 ---
+Universidade
+
+Analisando a versao iterativa de Fortalez
+
+A versao iterativa nao é analisada por recorréncia, mas 0 raciocinio é
+direto: basta contar quantas vezes os lacos aninhados executam.
+
+@ O laco externo executa n — 1 passagens (uma para cada elemento a
+posicionar, exceto o ultimo);
+
+@ Na passagem i, o laco interno faz comparagées de pares adjacentes,
+cuja quantidade diminui a cada passagem;
+
+@ Somando todas as iteracdes do laco interno:
+
+caio Marques Silva SANA - Const. € de Algoritmos
+
+
+--- PÁGINA 49 ---
+. ~ es . Universidade
+Analisando a versao iterativa S$ de Fortaleza
+
+A verso iterativa nao é analisada por recorréncia, mas o raciocinio é
+direto: basta contar quantas vezes os lacos aninhados executam.
+
+@ O laco externo executa n — 1 passagens (uma para cada elemento a
+posicionar, exceto o ultimo);
+
+@ Na passagem i, o laco interno faz comparagées de pares adjacentes,
+cuja quantidade diminui a cada passagem;
+
+@ Somando todas as iteragées do laco interno:
+
+n(n—1)
+
+f(n) =(n—1)+ (n—2)4+---41= => T(n) =0(n?)
+
+Mesma complexidade de tempo da versio recursiva, mas sem o custo de
+espaco das chamadas na pilha de recursao.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 50 ---
+Universidade
+
+Recursiva vs. Iterativa de Fortaleza
+
+Recursiva Iterativa
+Tempo (pior/médio caso) Q(n”) @(n?)
+Espaco extra Q(n) (pilha) Q(1)
+Analise recorréncia — arvore lacos aninhados
+
+@ As duas vers6es fazem 0 mesmo numero de comparacoes e trocas;
+
+@ A diferenga esta no uso de memoria: cada chamada recursiva ocupa
+espaco na pilha, enquanto a iterativa reutiliza as mesmas variaveis.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 51 ---
+Universidade
+
+Resumo de Fortaleza
+
+@ O Bubble Sort, a cada passagem, compara pares adjacentes e
+troca-os quando fora de ordem, “borbulhando” o maior elemento até
+o final do trecho.
+
+@ Versao recursiva: T(n) = T(n—1) +n, resolvida pela arvore de
+recursao (altura h =n, custosn,n—1,...,1).
+
+@ Versao iterativa: dois lagos aninhados, somando
+(n—1)+(n—2)+--+-+1 comparacoes.
+
+@ Ambas as versdes chegam a mesma complexidade final: T(n) = @(n?)
+no pior e no caso médio.
+
+@ A versao iterativa evita o custo de espaco extra da pilha de recursdo.
+
+Prof. M.Sc. Caio Marques Silva CANA - Const. ¢ Andlise de Algoritmos
+
+
+--- PÁGINA 52 ---
+ye Universidad
+Duvidas? de Fortaleza
+
+Perguntas? Vamos programar?
+
+- Const. ¢ Andlise de Algoritmos

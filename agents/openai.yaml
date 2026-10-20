@@ -1,0 +1,14 @@
+interface:
+  display_name: CANA — Tutor e simulados
+  short_description: Aprenda algoritmos e treine no estilo da sua prova
+  default_prompt: Use $ensinar-cana para me ensinar a matéria passo a passo e preparar
+    para a prova com os materiais do professor.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true
